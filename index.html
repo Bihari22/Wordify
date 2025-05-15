@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Language Practice App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="top-bar">
+          <h1>Language Flashcards</h1>
+          <button id="darkModeToggle" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+        </div>
+    <!-- Flashcards -->
+    <div class="flashcard">
+      <p id="flashcard-word">Hello</p>
+      <button onclick="nextFlashcard()">Next Word</button>
+    </div>
+
+    <!-- Quiz Section -->
+    <div class="quiz">
+      <h2>Quiz</h2>
+      <p>Translate in Spanish: <span id="quiz-word"></span></p>
+      <input type="text" id="quiz-answer" placeholder="Your answer" />
+      <button onclick="submitAnswer()">Submit</button>
+      <p id="quiz-feedback"></p>
+    </div>
+
+    <!-- Progress Tracker -->
+    <div class="progress">
+      <h3>Progress</h3>
+      <p>Correct Answers: <span id="correct-count">0</span></p>
+      <p>Total Attempts: <span id="total-count">0</span></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
