@@ -1,40 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Language Practice App</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>Wordify-Flashcard Language Quiz</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <div class="top-bar">
-          <h1>Language Flashcards</h1>
-          <button id="darkModeToggle" onclick="toggleDarkMode()">🌙 Dark Mode</button>
-        </div>
-    <!-- Flashcards -->
-    <div class="flashcard">
-      <p id="flashcard-word">Hello</p>
-      <button onclick="nextFlashcard()">Next Word</button>
-    </div>
 
-    <!-- Quiz Section -->
-    <div class="quiz">
-      <h2>Quiz</h2>
-      <p>Translate in Spanish: <span id="quiz-word"></span></p>
-      <input type="text" id="quiz-answer" placeholder="Your answer" />
-      <button onclick="submitAnswer()">Submit</button>
-      <p id="quiz-feedback"></p>
-    </div>
+  <!-- Flashcard Section -->
+  <div class="box" id="flashcard-section">
+    <h2>🧠 Flashcard Practice</h2>
+    <p id="flashcard-display"></p>
+    <button onclick="showNextFlashcard()">Next</button>
+    <button id="start-quiz-btn" onclick="goToQuiz()">Start Quiz</button>
 
-    <!-- Progress Tracker -->
-    <div class="progress">
-      <h3>Progress</h3>
-      <p>Correct Answers: <span id="correct-count">0</span></p>
-      <p>Total Attempts: <span id="total-count">0</span></p>
-    </div>
   </div>
 
+  <!-- Quiz Section -->
+  <div class="box" id="quiz-section">
+    <h2>📝 Quiz Time</h2>
+    <p>Translate: <span id="quiz-word"></span></p>
+    <input type="text" id="quiz-answer" placeholder="Your answer">
+    <br>
+    <button onclick="checkAnswer()">Check</button>
+    <p id="quiz-feedback"></p>
+    <p id="quiz-score">Score: 0/0</p>
+  </div>
+
+  <!-- Result Section -->
+  <div class="box" id="result-screen">
+    <h2 id="final-message"></h2>
+    <p id="final-score"></p>
+    <button onclick="printCertificate()">🖨️ Print Certificate</button>
+    <button onclick="resetQuiz()">🔁 Restart</button>
+  </div>
+
+  <div id="certificate" style="display: none;">
+    <div id="certificate-content" style="
+      width: 80%;
+      margin: 50px auto;
+      padding: 40px;
+      border: 10px double #000;
+      background: #f47d06eb;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      text-align: center;
+      font-family: 'Georgia', serif;
+    ">
+      <h1 style="font-size: 36px; margin-bottom: 10px;">🏆 Certificate of Completion</h1>
+      <p style="font-size: 20px;">This is proudly presented to</p>
+      <h2 id="cert-name" style="font-size: 28px; margin: 10px 0; font-weight: bold;"></h2>
+      <p style="font-size: 20px;">for successfully completing the Language Quiz with a score of</p>
+      <h3 id="cert-score" style="font-size: 24px; color: #111211; margin: 10px 0;"></h3>
+      <p style="font-size: 18px;">Date: <span id="cert-date"></span></p>
+      <p style="margin-top: 50px; font-size: 16px; font-style: italic;">Wordify</p>
+    </div>
+  </div>
+  
   <script src="script.js"></script>
 </body>
 </html>
